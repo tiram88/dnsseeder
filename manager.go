@@ -99,6 +99,13 @@ func (m *Manager) AddAddresses(addrs []*appmessage.NetAddress) int {
 		if !addressmanager.IsRoutable(addr, ActiveConfig().NetParams().AcceptUnroutable) {
 			continue
 		}
+		if int(addr.Port) != peersDefaultPort {
+			continue
+		}
+		_, err := net.LookupIP(string(addr.IP))
+		if err != nil {
+			continue
+		}
 		addrStr := addr.IP.String()
 
 		_, exists := m.nodes[addrStr]
