@@ -183,11 +183,11 @@ func loadConfig() (*ConfigFlags, error) {
 		if !activeConfig.Testnet {
 			return nil, errors.New("The net suffix can only be used with testnet")
 		}
-		if activeConfig.NetSuffix != 11 {
-			return nil, errors.New("The only supported explicit testnet net suffix is 11")
+		if activeConfig.NetSuffix != 12 {
+			return nil, errors.New("The only supported explicit testnet net suffix is 12")
 		}
 		activeConfig.NetParams().DefaultPort = "16311"
-		activeConfig.NetParams().Name = "kaspa-testnet-11"
+		activeConfig.NetParams().Name = "kaspa-testnet-12"
 	}
 
 	activeConfig.AppDir = cleanAndExpandPath(activeConfig.AppDir)
